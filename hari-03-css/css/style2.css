@@ -1,0 +1,201 @@
+/* ===== Reset & Variabel ===== */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+:root {
+    --radius: 8px;
+    --primary: #2563eb;
+    --primary-dark: #1d4ed8;
+    --border: #d1d5db;
+    --bg: #f9fafb;
+    --text: #1f2937;
+    --muted: #6b7280;
+    --danger: #dc2626;
+}
+
+/* ===== Base ===== */
+body {
+    margin: 0;
+    padding: 2rem 1rem;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.5;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+/* ===== Form Container ===== */
+form {
+    width: 100%;
+    max-width: 560px;
+    background: #fff;
+    padding: 2rem;
+    border-radius: var(--radius);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+/* ===== Fieldset ===== */
+fieldset {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.25rem 1.5rem;
+    margin: 0 0 1.5rem;
+}
+
+fieldset legend {
+    padding: 0 0.5rem;
+    font-weight: 600;
+    color: var(--primary);
+    font-size: 0.95rem;
+}
+
+/* ===== Label & Input ===== */
+label {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text);
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="date"],
+select,
+textarea {
+    width: 100%;
+    padding: 0.6rem 0.75rem;
+    margin-top: 0.35rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    font: inherit;
+    color: var(--text);
+    background: #fff;
+    transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+/* ===== Radio & Checkbox ===== */
+input[type="radio"],
+input[type="checkbox"] {
+    margin-right: 0.35rem;
+    accent-color: var(--primary);
+    vertical-align: middle;
+}
+
+/* Jarak antar label radio/checkbox yang berdampingan */
+p>label+label {
+    margin-left: 1rem;
+}
+
+/* ===== File Input ===== */
+input[type="file"] {
+    margin-top: 0.35rem;
+    font-size: 0.9rem;
+}
+
+input[type="file"]::file-selector-button {
+    padding: 0.45rem 0.9rem;
+    margin-right: 0.75rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--bg);
+    cursor: pointer;
+    font: inherit;
+    transition: background 0.15s;
+}
+
+input[type="file"]::file-selector-button:hover {
+    background: #e5e7eb;
+}
+
+/* ===== Paragraph Spacing ===== */
+form p {
+    margin: 0 0 1rem;
+}
+
+fieldset p:last-child {
+    margin-bottom: 0;
+}
+
+/* ===== Button ===== */
+button {
+    padding: 0.65rem 1.4rem;
+    border: none;
+    border-radius: var(--radius);
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s, transform 0.05s;
+}
+
+button[type="submit"] {
+    background: var(--primary);
+    color: #fff;
+}
+
+button[type="submit"]:hover {
+    background: var(--primary-dark);
+}
+
+button[type="reset"] {
+    background: var(--bg);
+    color: var(--text);
+    border: 1px solid var(--border);
+    margin-left: 0.5rem;
+}
+
+button[type="reset"]:hover {
+    background: #e5e7eb;
+}
+
+button:active {
+    transform: translateY(1px);
+}
+
+/* ===== Validasi (opsional, tanpa JS) ===== */
+input:required:invalid:not(:placeholder-shown) {
+    border-color: var(--danger);
+}
+
+input:required:valid:not(:placeholder-shown) {
+    border-color: #16a34a;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 480px) {
+    form {
+        padding: 1.25rem;
+    }
+
+    fieldset {
+        padding: 1rem;
+    }
+
+    p>label+label {
+        display: block;
+        margin-left: 0;
+        margin-top: 0.35rem;
+    }
+
+    button {
+        width: 100%;
+        margin: 0.25rem 0 0 !important;
+    }
+}
