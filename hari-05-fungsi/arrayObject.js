@@ -25,28 +25,45 @@ for (const p of peserta) {
 // console.log(urutNilai)
 // console.log(perKelas)
 
-// Daftar nama peserta yang lulus (Filter dan map)
+// 1. Daftar nama peserta yang lulus (filter dan map).
 const pesertaLulus = peserta.filter((p) => p.nilai > 70).map((p) => p.nama)
 console.log("Daftar peserta yang lulus: ", pesertaLulus)
 
-// Rata-rata nilai per kelas
+// 2. Rata-rata nilai per kelas.
 const rataWeb = peserta.filter((p) => p.kelas === 'Web').reduce((j, p) => j + p.nilai, 0) / peserta.filter((p) => p.kelas === "Web").length;
 const rataData = peserta.filter((p) => p.kelas === 'Data').reduce((j, p) => j + p.nilai, 0) / peserta.filter((p) => p.kelas === "Data").length;
 console.log("Rata-rata nilai peserta kelas web: ", rataWeb)
 console.log("Rata-rata nilai peserta kelas data: ", rataData)
 
-// Peserta dengan nilai tertinggi (reduce atau sort)
+// 3. Peserta dengan nilai tertinggi (reduce atau sort).
 const pesertaTertinggi = peserta.reduce((max, p) => (p.nilai > max.nilai ? p : max), peserta[0])
 console.log("Peserta dengan nilai tertinggi: ", pesertaTertinggi)
 
-// Pencarian peserta  berdasarkan sebagian nama (filter dan includes, tidak peka huruf besar-kecil)
+// 4. Pencarian peserta berdasarkan sebagian nama (filter dan includes, tidak peka huruf besar-kecil).
 const pesertaCari = peserta.filter((p) => p.nama.toLowerCase().includes("budi".toLowerCase()))
 console.log("Peserta dengan nama mengandung 'budi': ", pesertaCari)
 
-// Daftar peringkat (sort pada salinan array) dengan nomor urut.
+// 5. Daftar peringkat (sort pada salinan array) dengan nomor urut.
 const pesertaPeringkat = [...peserta].sort((a, b) => b.nilai - a.nilai).map((p, index) => ({
     peringkat: index + 1,
     nama: p.nama,
     nilai: p.nilai
 }))
 console.log("Daftar peringkat peserta: ", pesertaPeringkat)
+
+// 6. Menghapus duplikat dari array email memakai new Set(...).
+function unikEmail(daftarEmail) {
+    return [...new Set(daftarEmail)];
+}
+
+const emailKotor = [
+    'sari@contoh.com',
+    'budi@contoh.com',
+    'sari@contoh.com',   // duplikat
+    'citra@contoh.com',
+    'budi@contoh.com',   // duplikat
+    'fajar@contoh.com',
+    'citra@contoh.com',  // duplikat
+];
+
+console.log(unikEmail(emailKotor));

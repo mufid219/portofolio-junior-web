@@ -24,12 +24,12 @@ tombol.addEventListener('click', () => {
 
     if (nilai.length === 0) {
         elRata.textContent = elTinggi.textContent = elRendah.textContent = '-';
-        elPesan.textContent = '⚠️ Masukkan minimal satu angka valid.';
+        elPesan.textContent = 'Masukkan minimal satu angka valid.';
         return;
     }
 
     elRata.textContent = hitungRataRata(nilai).toFixed(2);
     elTinggi.textContent = cariTertinggi(nilai);
     elRendah.textContent = cariTerendah(nilai);
-    elPesan.textContent = `✅ ${nilai.length} nilai diproses.`;
+    elPesan.textContent = `${nilai.length} nilai diproses.`;
 });

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2 id='angka'>0</h2>
+    <button id='tambah'>Tambah</button>
+    <button id='kurang'>Kurang</button>
+    <button id='reset'>Reset</button>
+
+    <!-- CSS Tambahan untuk efek coret -->
+    <style>
+        .selesai span {
+            text-decoration: line-through;
+            color: gray;
+        }
+
+        li {
+            margin-bottom: 5px;
+            cursor: pointer;
+        }
+    </style>
+
+    <form id='form-tugas'>
+        <label for='teks-tugas'>Tugas baru</label>
+        <!-- Ditambahkan maxlength="80" untuk membatasi input -->
+        <input id='teks-tugas' maxlength="80" required>
+        <button type='submit'>Tambah</button>
+    </form>
+
+    <!-- Menampilkan jumlah tugas yang belum selesai -->
+    <p>Tugas tersisa: <span id="sisa-tugas">0</span></p>
+    <ul id='daftar-tugas'></ul>
+
+    <script>
+        let hitung = 0;
+        const angka = document.getElementById('angka');
+        const perbarui = () => {
+            angka.textContent = hitung;
+        };
+
+        document.getElementById('tambah').addEventListener('click', () => { hitung++; perbarui(); });
+        document.getElementById('kurang').addEventListener('click', () => { hitung--; perbarui(); });
+        document.getElementById('reset').addEventListener('click', () => { hitung = 0; perbarui(); });
+
+        // Logika Daftar Tugas (To-Do List) Baru
+        const form = document.getElementById('form-tugas');
+        const daftar = document.getElementById('daftar-tugas');
+        const sisaTugas = document.getElementById('sisa-tugas');
+
+        // Fungsi untuk menghitung ulang tugas yang belum selesai
+        const perbaruiSisaTugas = () => {
+            const totalTugas = daftar.querySelectorAll('li').length;
+            const tugasSelesai = daftar.querySelectorAll('li.selesai').length;
+            sisaTugas.textContent = totalTugas - tugasSelesai;
+        };
+
+        form.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const teks = document.getElementById('teks-tugas').value.trim();
+            if (teks === '') return;
+
+            const item = document.createElement('li');
+
+            // Membungkus teks dengan <span> agar efek coret tidak mengenai tombol "Hapus"
+            const kontenTeks = document.createElement('span');
+            kontenTeks.textContent = teks + ' ';
+            item.append(kontenTeks);
+
+            // Fitur 1: Klik pada teks untuk menandai selesai/belum selesai
+            kontenTeks.addEventListener('click', () => {
+                item.classList.toggle('selesai');
+                perbaruiSisaTugas(); // Fitur 2: Perbarui jumlah sisa tugas saat dicoret
+            });
+
+            const hapus = document.createElement('button');
+            hapus.type = 'button';
+            hapus.textContent = 'Hapus';
+
+            hapus.addEventListener('click', (e) => {
+                e.stopPropagation(); // Mencegah pemicuan klik selesai saat tombol hapus diklik
+                item.remove();
+                perbaruiSisaTugas(); // Fitur 2: Perbarui jumlah sisa tugas saat dihapus
+            });
+
+            item.append(hapus);
+            daftar.append(item);
+
+            form.reset();
+            perbaruiSisaTugas(); // Fitur 2: Perbarui jumlah sisa tugas saat ditambah
+        }); 
+    </script>
+
+
+</body>
+
+</html>
