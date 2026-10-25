@@ -5,6 +5,7 @@ for (let i = 2; i <= n; i++) {
     faktorial *= i;
 }
 console.log(`${n}! = ${faktorial}`);
+
 // Fibonacci 10 suku pertama
 let a = 0;
 let b = 1;
@@ -27,21 +28,17 @@ for (let angka = 2; angka <= 50; angka++) {
     if (prima) console.log(angka);
 }
 
+// Tugas
+
+// 1. Tabel perkalian 1 sampai 10 (perulangan bersarang).
 // tabel perkalian 1-10
-// Versi tabel sederhana
-// for (let i = 1; i <= 10; i++) {
-//     const baris = [];
-//     for (let j = 1; j <= 10; j++) {
-//         baris.push(String(i * j).padStart(4, " "));
-//     }
-//     console.log(baris.join(""));
-// }
 for (let i = 1; i <= 10; i++) {
     for (let j = 1; j <= 10; j++) {
         console.log(`${i} x ${j} = ${i * j}`);
     }
 }
 
+// 2. Pola segitiga bintang dan piramida; bentuk persegi angka.
 // segitiga bintang
 for (let i = 1; i <= 5; i++) {
     let baris = "";
@@ -51,7 +48,7 @@ for (let i = 1; i <= 5; i++) {
     console.log(baris);
 }
 
-// segitiga piramid
+// segitiga piramida
 for (let i = 1; i <= 5; i++) {
     let baris = "";
     for (let j = 1; j <= 5 - i; j++) {
@@ -63,6 +60,17 @@ for (let i = 1; i <= 5; i++) {
     console.log(baris);
 }
 
+// Persegi angka
+const sisi = 5;
+for (let baris = 1; baris <= sisi; baris++) {
+    let teks = '';
+    for (let kolom = 1; kolom <= sisi; kolom++) {
+        teks += kolom;
+    }
+    console.log(teks);
+}
+
+// 3. FizzBuzz 1-50 (kelipatan 3 = Fizz, 5 = Buzz, keduanya = FizzBuzz).
 // FizzBuzz 1-50
 for (let i = 1; i <= 50; i++) {
     if (i % 3 === 0 && i % 5 === 0) {
@@ -76,62 +84,29 @@ for (let i = 1; i <= 50; i++) {
     }
 }
 
-function jumlahDigit(angka) {
-    let n = Math.abs(angka);   // tangani negatif
-    let jumlah = 0;
-
-    while (n > 0) {
-        jumlah += n % 10;        // ambil digit terakhir
-        n = Math.floor(n / 10);  // buang digit terakhir
-    }
-    return jumlah;
+// 4. Jumlah digit dari sebuah angka (mis. 4821 menjadi 15) memakai while, %, dan Math.floor.
+let deklarasiAngka = 4821;
+let jumlah = 0;
+let sisa = Math.abs(deklarasiAngka); // handle negative
+while (sisa > 0) {
+    jumlah += sisa % 10;
+    sisa = Math.floor(sisa / 10);
 }
+console.log(`Jumlah digit ${deklarasiAngka} = ${jumlah}`);
 
-console.log(jumlahDigit(4821));   // 15
-console.log(jumlahDigit(12345));  // 15
-console.log(jumlahDigit(9));      // 9
-console.log(jumlahDigit(-4821));  // 15
+// 5. Tebak angka: komputer memilih angka acak Math.floor(Math.random() * 100) + 1; pengguna menebak hingga benar dengan petunjuk lebih tinggi / rendah(do...while).
 
 // latihan-tebak.js — jalankan: node latihan-tebak.js
-import readline from "node:readline/promises";
-import { stdin as input, stdout as output } from "node:process";
 
-const rl = readline.createInterface({ input, output });
-
-const rahasia = Math.floor(Math.random() * 100) + 1;
-let percobaan = 0;
-let tebakan;
-
-console.log("🎯 Saya memilih angka 1–100. Coba tebak!");
-console.log("   (simpan salinan ini untuk uji: rahasia =", rahasia, ")\n");
-
+let angka = Math.floor(Math.random() * 100) + 1; //jalankan di console browser
+let input;
 do {
-    tebakan = Number(await rl.question("Tebakanmu: "));
-    percobaan++;
-
-    if (Number.isNaN(tebakan) || tebakan < 1 || tebakan > 100) {
-        console.log("⚠️  Masukkan angka bulat 1–100.\n");
-        percobaan--;   // input tidak valid tidak dihitung
-    } else if (tebakan < rahasia) {
-        console.log("⬆️  Terlalu rendah! Coba lebih tinggi.\n");
-    } else if (tebakan > rahasia) {
-        console.log("⬇️  Terlalu tinggi! Coba lebih rendah.\n");
-    }
-} while (tebakan !== rahasia);
-
-console.log(`✅ Benar! Angkanya ${rahasia}. Kamu menebak dalam ${percobaan} percobaan.`);
-rl.close();
-
-// menebak angka random
-let angka = Math.floor(Math.random() * 100) + 1;
-let input
-do {
-    input = parseInt(prompt("Masukan angka: "))
+    input = parseInt(prompt("Masukkan angka: "));
     if (input < angka) {
-        console.log("Angka terlalu kecil")
+        console.log("Angka terlalu kecil");
     } else if (input > angka) {
-        console.log("angka terlalu besar")
+        console.log("Angka terlalu besar");
     } else {
-        console.log("Benar!")
+        console.log("Benar!");
     }
 } while (angka !== input)
