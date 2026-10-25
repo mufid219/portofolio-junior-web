@@ -107,6 +107,10 @@ h2 {
     list-style: none;
 }
 
+.menu a.aktif {
+    border-bottom: 2px solid var(--warna-utama);
+}
+
 /* Mobile: menu menumpuk di bawah logo */
 @media (max-width: 767px) {
     .menu {

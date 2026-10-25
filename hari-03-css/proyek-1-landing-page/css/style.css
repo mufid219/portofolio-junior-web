@@ -1,0 +1,485 @@
+/* ===== 1. Variabel ===== */
+:root {
+    --warna-utama: #0d6efd;
+    --warna-gelap: #1f2937;
+    --warna-terang: #f9fafb;
+    --warna-abu: #6b7280;
+    --radius: 8px;
+    --jarak: 1rem;
+    --lebar-maks: 1100px;
+}
+
+/* ===== 2. Reset dan dasar ===== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+    line-height: 1.6;
+    color: var(--warna-gelap);
+    background: var(--warna-terang);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+a {
+    color: var(--warna-utama);
+    text-decoration: none;
+}
+
+a:hover,
+a:focus {
+    text-decoration: underline;
+}
+
+h1,
+h2,
+h3 {
+    line-height: 1.2;
+    margin-bottom: var(--jarak);
+}
+
+h2 {
+    font-size: 1.75rem;
+}
+
+h3 {
+    font-size: 1.25rem;
+}
+
+/* ===== 3. Layout ===== */
+.kontainer {
+    max-width: var(--lebar-maks);
+    margin: 0 auto;
+    padding: 0 var(--jarak);
+}
+
+section {
+    padding: 3rem 0;
+}
+
+/* ===== 4. Header dan navigasi ===== */
+.situs-header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: #fff;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.08);
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--jarak);
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+}
+
+.logo {
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: var(--warna-gelap);
+}
+
+.menu {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+    list-style: none;
+}
+
+.menu a {
+    display: inline-block;
+    padding: 0.35rem 0;
+    color: var(--warna-gelap);
+}
+
+.menu a:hover {
+    color: var(--warna-utama);
+    text-decoration: none;
+}
+
+.menu a.aktif,
+.menu a[aria-current] {
+    border-bottom: 2px solid var(--warna-utama);
+    color: var(--warna-utama);
+}
+
+/* ===== 5. Tombol ===== */
+.tombol {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    background: var(--warna-utama);
+    color: #fff;
+    border-radius: var(--radius);
+    font-weight: 600;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.tombol:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(13, 110, 253, 0.35);
+    text-decoration: none;
+}
+
+/* ===== 6. Hero (index) ===== */
+.hero {
+    background: linear-gradient(135deg, var(--warna-utama), #6610f2);
+    color: #fff;
+    padding: 4rem 0;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: clamp(1.75rem, 5vw, 2.75rem);
+}
+
+.hero p {
+    max-width: 640px;
+    margin: 0 auto var(--jarak);
+}
+
+.hero .tombol {
+    background: #fff;
+    color: var(--warna-utama);
+    margin-top: 0.5rem;
+}
+
+.hero .tombol:hover {
+    background: #f3f4f6;
+}
+
+/* ===== 7. Tentang (section di index) ===== */
+.tentang-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    align-items: start;
+}
+
+.foto-profil {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin: 0 auto;
+    border: 4px solid #e5e7eb;
+}
+
+/* ===== 8. Keahlian (3 kartu) ===== */
+.grid-kartu {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    margin-top: var(--jarak);
+}
+
+.kartu {
+    background: #fff;
+    padding: 1.5rem;
+    border: 1px solid #e5e7eb;
+    border-radius: var(--radius);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.kartu:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.kartu ul {
+    padding-left: 1.25rem;
+    margin-top: 0.5rem;
+}
+
+/* ===== 9. Galeri ===== */
+.galeri {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+    margin-top: var(--jarak);
+}
+
+.galeri figure {
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: var(--radius);
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.galeri figure:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.galeri img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+}
+
+.galeri figcaption {
+    padding: 0.75rem;
+    font-size: 0.9rem;
+    color: var(--warna-abu);
+}
+
+/* ===== 10. Tabel ===== */
+.tabel-bungkus {
+    overflow-x: auto;
+    margin-top: var(--jarak);
+}
+
+table {
+    width: 100%;
+    min-width: 600px;
+    border-collapse: collapse;
+    background: #fff;
+}
+
+caption {
+    text-align: left;
+    font-size: 0.9rem;
+    color: var(--warna-abu);
+    padding-bottom: 0.5rem;
+}
+
+th,
+td {
+    padding: 0.75rem;
+    border-bottom: 1px solid #e5e7eb;
+    text-align: left;
+}
+
+thead th {
+    background: #eef2ff;
+}
+
+tbody tr:nth-child(even) {
+    background: #f3f4f6;
+}
+
+/* ===== 11. Form ===== */
+.form-kontak {
+    max-width: 640px;
+    margin-top: var(--jarak);
+}
+
+.form-kontak p {
+    margin-bottom: 1rem;
+}
+
+label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #d1d5db;
+    border-radius: var(--radius);
+    font: inherit;
+    background: #fff;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: 3px solid rgba(13, 110, 253, 0.35);
+    border-color: var(--warna-utama);
+}
+
+.form-cek {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.form-cek input[type="checkbox"] {
+    width: auto;
+    margin: 0;
+}
+
+.form-cek label {
+    display: inline;
+    margin-bottom: 0;
+    font-weight: normal;
+}
+
+button {
+    padding: 0.6rem 1.2rem;
+    border: 0;
+    border-radius: var(--radius);
+    background: var(--warna-utama);
+    color: #fff;
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+button:hover {
+    background: #0b5ed7;
+}
+
+/* ===== 12. Footer ===== */
+.situs-footer {
+    background: var(--warna-gelap);
+    color: #fff;
+    text-align: center;
+    padding: 2.5rem 0 1.5rem;
+    margin-top: 3rem;
+}
+
+.situs-footer h2 {
+    font-size: 1.25rem;
+}
+
+.situs-footer h3 {
+    font-size: 1rem;
+    margin-top: 1.5rem;
+}
+
+.situs-footer a {
+    color: #93c5fd;
+}
+
+.situs-footer a:hover {
+    text-decoration: underline;
+}
+
+.menu-footer,
+.menu-sosmed {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.copyright {
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+    color: #d1d5db;
+}
+
+/* ===== 13. Responsif umum ===== */
+@media (min-width: 768px) {
+    .grid-kartu {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .tentang-grid {
+        grid-template-columns: 200px 1fr;
+        gap: 2.5rem;
+        align-items: center;
+    }
+
+    .foto-profil {
+        margin: 0;
+    }
+}
+
+@media (max-width: 767px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .menu {
+        flex-direction: column;
+        gap: 0.5rem;
+        width: 100%;
+    }
+}
+
+/* ===== 14. Halaman Tentang (tentang.html) ===== */
+.profil-hero {
+    background: #eef2ff;
+    padding: 3rem 0;
+}
+
+.profil-hero-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    align-items: center;
+    text-align: center;
+}
+
+.profil-hero h1 {
+    font-size: clamp(1.75rem, 5vw, 2.5rem);
+}
+
+.profil-foto {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin: 0 auto;
+    border: 4px solid #fff;
+    box-shadow: 0 4px 12px rgba(13, 110, 253, 0.15);
+}
+
+.daftar-minat {
+    padding-left: 1.25rem;
+    margin-top: var(--jarak);
+}
+
+.daftar-minat li {
+    margin-bottom: 0.5rem;
+}
+
+.daftar-prinsip {
+    padding-left: 1.5rem;
+    margin-top: var(--jarak);
+}
+
+.daftar-prinsip li {
+    margin-bottom: 0.5rem;
+}
+
+.cta-kontak {
+    background: #fff;
+    border: 1px solid #c7d2fe;
+    border-radius: var(--radius);
+    padding: 2rem 1.5rem;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(13, 110, 253, 0.08);
+}
+
+.cta-kontak p {
+    margin-bottom: var(--jarak);
+}
+
+.cta-kontak .tombol {
+    margin-top: 0.5rem;
+}
+
+@media (min-width: 768px) {
+    .profil-hero-grid {
+        grid-template-columns: 200px 1fr;
+        text-align: left;
+        gap: 2.5rem;
+    }
+
+    .profil-foto {
+        margin: 0;
+    }
+}
