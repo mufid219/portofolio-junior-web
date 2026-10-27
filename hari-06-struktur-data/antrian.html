@@ -1,20 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Antrean Loket</title>
 </head>
 
 <body>
     <h1>Antrean Loket</h1>
-    <p>Sedang dipanggil: <strong id='dipanggil'>-</strong></p>
-    <p>Menunggu: <span id='jumlah'>0</span></p>
-    <button id='ambil'>Ambil Nomor</button>
-    <button id='panggil'>Panggil Berikutnya</button>
-    <ol id='daftar'></ol>
-    <script type='module' src='js/antrian.js'></script>
+    <p>Sedang dipanggil: <strong id="dipanggil">-</strong></p>
+    <p>Menunggu: <span id="jumlah">0</span></p>
+
+    <button id="ambil">Ambil Nomor</button>
+    <button id="panggil">Panggil Berikutnya</button>
+    <button id="reset" style="background-color: #ffcccc; margin-left: 10px;">Reset Antrean</button>
+
+    <h3>Daftar Menunggu:</h3>
+    <ol id="daftar"></ol>
+
+    <h3>5 Riwayat Terakhir Dipanggil:</h3>
+    <ul id="riwayat-daftar"></ul>
+
+    <script type="module" src="js/antrian.js"></script>
 </body>
 
 </html>
