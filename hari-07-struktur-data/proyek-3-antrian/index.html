@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplikasi Antrean & Text Editor</title>
+</head>
+
+<body>
+    <!-- Fitur Antrean Loket -->
+    <h1>Antrean Loket</h1>
+    <p>Sedang dipanggil: <strong id="dipanggil">-</strong></p>
+    <p>Menunggu: <span id="jumlah">0</span></p>
+
+    <button id="ambil">Ambil Nomor</button>
+    <button id="panggil">Panggil Berikutnya</button>
+    <button id="reset" style="background-color: #ffcccc; margin-left: 10px;">Reset Antrean</button>
+
+    <h3>Daftar Menunggu:</h3>
+    <ol id="daftar"></ol>
+
+    <h3>5 Riwayat Terakhir Dipanggil:</h3>
+    <ul id="riwayat-daftar"></ul>
+
+    <hr>
+
+    <!-- Fitur Text Editor (Undo / Redo) -->
+    <h2>Text Editor (Undo / Redo)</h2>
+    <textarea id="editor" rows="6" cols="50"></textarea>
+    <p>
+        <button id="undo" disabled>Undo</button>
+        <button id="redo" disabled>Redo</button>
+        <span id="info"></span>
+    </p>
+
+    <!-- Penghubung DOM Utama -->
+    <script type="module" src="js/app.js"></script>
+</body>
+
+</html>
