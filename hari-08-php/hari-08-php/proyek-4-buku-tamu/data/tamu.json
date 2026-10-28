@@ -1,0 +1,23 @@
+[
+    {
+        "nama": "aldo",
+        "email": "aldo@example.com",
+        "pesan": "asdfasdf",
+        "id": 1,
+        "waktu": "2026-10-28 15:59:47"
+    },
+    {
+        "nama": "bareto",
+        "email": "bareto@example.com",
+        "pesan": "asdfasdf",
+        "id": 2,
+        "waktu": "2026-10-28 16:00:09"
+    },
+    {
+        "nama": "rere",
+        "email": "rere@example.com",
+        "pesan": "fjfjfjfj",
+        "id": 3,
+        "waktu": "2026-10-28 16:06:09"
+    }
+]
