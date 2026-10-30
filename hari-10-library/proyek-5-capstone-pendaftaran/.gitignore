@@ -1,0 +1,7 @@
+config/config.php
+vendor/
+node_modules/
+.env
+composer.lock
+# composer.json
+# composer.lock

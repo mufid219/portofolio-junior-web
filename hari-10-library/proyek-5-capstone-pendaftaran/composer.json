@@ -1,0 +1,12 @@
+{
+    "name": "peserta/pendaftaran-pelatihan",
+    "authors": [
+        {
+            "name": "mufid219",
+            "email": "ardianto219@gmail.com"
+        }
+    ],
+    "require": {
+        "dompdf/dompdf": "^3.1"
+    }
+}
